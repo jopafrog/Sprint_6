@@ -2,7 +2,6 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-# здесь всякие методы действий с элементами, в общем виде, чтобы не писать их для каждой конкретной страницы
 class BasePage:
     def __init__(self, driver):
         self.driver = driver

@@ -1,7 +1,9 @@
 from pages.base_page import BasePage
+import allure
 
 
 class MainPage(BasePage):
+    @allure.step('Нажать на вопрос и вернуть текст ответа')
     def click_to_question_and_get_answer_text(self, locator_question, locator_answer, number):
         locator_question = self.locator_number(locator_question, number)
         locator_answer = self.locator_number(locator_answer, number)
@@ -16,10 +18,12 @@ class MainPage(BasePage):
         method, locator = locator
         return method, locator.format(number)
 
+    @allure.step('Нажать на лого "Самокат" и вернуть текс на главной странице')
     def click_to_scooter_button_and_return_title(self, locator_button, locator_main_title):
         self.click_on_element(locator_button)
         return self.get_text_from_element(locator_main_title)
 
+    @allure.step('Нажать на лого "Яндекс", поменять вкладку и вернуть url вкладки')
     def click_to_yandex_button_and_return_dzen_link(self, locator_yandex_button, locator_dzen):
         self.click_on_element(locator_yandex_button)
         self.switch_to_window(1)

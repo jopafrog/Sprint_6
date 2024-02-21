@@ -1,17 +1,13 @@
 import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-
 import data
+import allure
+from selenium import webdriver
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
 
 
-# from selenium.webdriver.support.wait import WebDriverWait
-# from selenium.webdriver.support import expected_conditions
-
-
 @pytest.fixture(scope='function')
+@allure.title('Запуск драйвера (FireFox)')
 def driver():
     options = webdriver.FirefoxOptions()
     options.add_argument("--width=1920")
@@ -25,12 +21,14 @@ def driver():
 
 
 @pytest.fixture(scope='function')
+@allure.title('Переход на главную и создание объекта MainPage')
 def main_page(driver):
     driver.get(data.MAIN_PAGE_URL)
     return MainPage(driver)
 
 
 @pytest.fixture(scope='function')
+@allure.title('Переход на главную и создание объекта OrderPage')
 def order_page(driver):
     driver.get(data.MAIN_PAGE_URL)
     return OrderPage(driver)

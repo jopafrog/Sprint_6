@@ -1,9 +1,11 @@
 import pytest
 import data
+import allure
 from locators.order_page_locators import OrderPageLocators
 
 
 class TestOrderPage:
+    @allure.title('Проверка оформления заказа через кнопку {button_position}')
     @pytest.mark.parametrize(
         "locator, button_position",
         [

@@ -1,8 +1,10 @@
+import allure
 import pytest
 from locators.main_page_locators import MainPageLocators
 
 
 class TestMainPage:
+    @allure.title('Проверка ответов на Вопросы о важном, вопрос {number}')
     @pytest.mark.parametrize(
         "number, expected_text",
         [
@@ -24,10 +26,12 @@ class TestMainPage:
             MainPageLocators.QUESTION_LOCATOR, MainPageLocators.ANSWER_LOCATOR, number)
         assert text_answer == expected_text
 
+    @allure.title('При нажатии на лого "Самокат" переходим на главную страницу')
     def test_scooter_button_success(self, main_page):
         assert 'на пару дней' in main_page.click_to_scooter_button_and_return_title(
             MainPageLocators.SCOOTER_LINK, MainPageLocators.MAIN_PAGE_TITLE)
 
+    @allure.title('При нажатии на лого "Яндекс" переходим на страницу Дзен')
     def test_go_to_dzen_success(self, main_page):
         assert 'dzen.ru' in main_page.click_to_yandex_button_and_return_dzen_link(
             MainPageLocators.YANDEX_LINK, MainPageLocators.DZEN_LOGO)
