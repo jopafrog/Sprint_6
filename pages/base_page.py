@@ -23,3 +23,14 @@ class BasePage:
     def scroll_to_position(self, locator):
         element = self.find_element_with_wait(locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    def send_keys(self, locator, key):
+        element = self.find_element_with_wait(locator)
+        element.send_keys(key)
+
+    def switch_to_window(self, window_number):
+        next_window = self.driver.window_handles[window_number]
+        self.driver.switch_to.window(next_window)
+
+    def current_url(self):
+        return self.driver.current_url

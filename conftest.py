@@ -2,12 +2,13 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+import data
 from pages.main_page import MainPage
+from pages.order_page import OrderPage
 
 
 # from selenium.webdriver.support.wait import WebDriverWait
 # from selenium.webdriver.support import expected_conditions
-# import data
 
 
 @pytest.fixture(scope='function')
@@ -25,5 +26,11 @@ def driver():
 
 @pytest.fixture(scope='function')
 def main_page(driver):
-    driver.get('https://qa-scooter.praktikum-services.ru/')
+    driver.get(data.MAIN_PAGE_URL)
     return MainPage(driver)
+
+
+@pytest.fixture(scope='function')
+def order_page(driver):
+    driver.get(data.MAIN_PAGE_URL)
+    return OrderPage(driver)

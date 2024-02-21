@@ -1,5 +1,4 @@
 import pytest
-
 from locators.main_page_locators import MainPageLocators
 
 
@@ -24,3 +23,11 @@ class TestMainPage:
         text_answer = main_page.click_to_question_and_get_answer_text(
             MainPageLocators.QUESTION_LOCATOR, MainPageLocators.ANSWER_LOCATOR, number)
         assert text_answer == expected_text
+
+    def test_scooter_button_success(self, main_page):
+        assert 'на пару дней' in main_page.click_to_scooter_button_and_return_title(
+            MainPageLocators.SCOOTER_LINK, MainPageLocators.MAIN_PAGE_TITLE)
+
+    def test_go_to_dzen_success(self, main_page):
+        assert 'dzen.ru' in main_page.click_to_yandex_button_and_return_dzen_link(
+            MainPageLocators.YANDEX_LINK, MainPageLocators.DZEN_LOGO)
