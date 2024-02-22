@@ -12,14 +12,14 @@ class OrderPageLocators:
     PHONE_INPUT = By.XPATH, './/div[text()="Введите корректный номер"]/parent::div/input'
 
     METRO_INPUT = By.XPATH, './/div[@class="select-search__value"]/input'  # Поле ввода станции метро
-    METRO_STATION = By.XPATH, './/li[@class="select-search__row"]/button[@value="9"]'  # Элемент в списке станций
+    METRO_STATION_NUMBER = By.XPATH, './/li[@class="select-search__row"]/button[@value="{}"]'  # Номер станции метро
 
     NEXT_BUTTON = By.XPATH, './/button[text()="Далее"]'
 
     DATA_INPUT = By.XPATH, './/div[@class="react-datepicker__input-container"]/input'  # Поле ввода даты
 
     DROP_MENU_TIME_ARROW = By.XPATH, './/span[@class="Dropdown-arrow"]'  # Флаг раскрывающий меню выбора времени аренды
-    DROP_MENU_TIME = By.XPATH, './/div[@class="Dropdown-menu"]/div[text()="трое суток"]'  # Элемент в выпадающем списке
+    DROP_MENU_RENTAL_TIME = By.XPATH, './/div[@class="Dropdown-menu"]/div[text()="{}"]'  # Элемент в выпадающем списке
 
     ORDER_BUTTON = By.XPATH, './/div[@class="Order_Buttons__1xGrp"]/button[text()="Заказать"]'
     ACCEPT_BUTTON = By.XPATH, './/button[text()="Да"]'

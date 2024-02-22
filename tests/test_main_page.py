@@ -1,6 +1,5 @@
 import allure
 import pytest
-from locators.main_page_locators import MainPageLocators
 
 
 class TestMainPage:
@@ -22,16 +21,17 @@ class TestMainPage:
             (7, 'Да, обязательно. Всем самокатов! И Москве, и Московской области.'),
         ])
     def test_question_text_success(self, main_page, number, expected_text):
-        text_answer = main_page.click_to_question_and_get_answer_text(
-            MainPageLocators.QUESTION_LOCATOR, MainPageLocators.ANSWER_LOCATOR, number)
+        text_answer = main_page.click_to_question_and_get_answer_text(number)
         assert text_answer == expected_text
 
     @allure.title('При нажатии на лого "Самокат" переходим на главную страницу')
     def test_scooter_button_success(self, main_page):
-        assert 'на пару дней' in main_page.click_to_scooter_button_and_return_title(
-            MainPageLocators.SCOOTER_LINK, MainPageLocators.MAIN_PAGE_TITLE)
+        main_page.click_to_scooter_button()
+        page_title = main_page.get_text_tittle()
+        assert 'на пару дней' in page_title
 
     @allure.title('При нажатии на лого "Яндекс" переходим на страницу Дзен')
     def test_go_to_dzen_success(self, main_page):
-        assert 'dzen.ru' in main_page.click_to_yandex_button_and_return_dzen_link(
-            MainPageLocators.YANDEX_LINK, MainPageLocators.DZEN_LOGO)
+        main_page.click_to_yandex_button()
+        page_link = main_page.switch_to_window_and_return_link()
+        assert 'dzen.ru' in page_link
